@@ -1,0 +1,200 @@
+@font-face {
+    font-family: awe-reg;
+    src: url("../../fonts/font-awesome/fa-regular-400.ttf");
+  }
+  
+  @font-face {
+    font-family: awe-solid;
+    src: url("../../fonts/font-awesome/fa-solid-900.ttf");
+  }
+  
+  @font-face {
+    font-family: awe-brands;
+    src: url("../../fonts/font-awesome/fa-brands-400.ttf");
+  }
+  
+  .far::before {
+    font-family: awe-reg;
+  }
+  
+  .fas::before {
+    font-family: awe-solid;
+  }
+  
+  .fab::before {
+    font-family: awe-brands;
+  }
+  
+  .fas::after {
+    font-family: awe-solid;
+  }
+  
+  .fas.fa-home::before {
+    content: "\f015";
+  }
+  
+  .fas.fa-plus-square::before {
+    content: "\f0fe";
+  }
+  
+  .fas.fa-heart::before {
+    content: "\f004";
+  }
+  
+  .far.fa-heart::before {
+    content: "\f004";
+  }
+  
+  .fas.fa-play::before {
+    content: "\f04b";
+  }
+  
+  .fas.fa-pause::before {
+    content: "\f04c";
+  }
+  
+  .fas.fa-step-backward::before {
+    content: "\f048";
+  }
+  
+  .fas.fa-step-forward::before {
+    content: "\f051";
+  }
+  
+  .fas.fa-random::before {
+    content: "\f074";
+  }
+  
+  .fas.fa-redo::before {
+    content: "\f01e";
+  }
+  
+  .fas.fa-volume-up::before {
+    content: "\f028";
+  }
+  
+  .fas.fa-volume-down::before {
+    content: "\f027";
+  }
+  
+  .fas.fa-volume-mute::before {
+    content: "\f6a9";
+  }
+  
+  .far.fa-user-circle::before {
+    content: "\f007";
+  }
+  
+  .fas.fa-sort-down::before {
+    content: "\f0dd";
+  }
+  
+  .fas.fa-sort-up::before {
+    content: "\f0de";
+  }
+  // .fas.fa-sort-down::after {
+  //   content: "\f0dd";
+  // }
+  
+  .fas.fa-ellpsis-h::before {
+    content: "\f141";
+  }
+  
+  .far.fa-arrow-alt-circle-down::before {
+    content: "\f358";
+  }
+  
+  .fas.fa-search::before {
+    content: "\f002";
+  }
+  
+  .far.fa-clock::before {
+    content: "\f017";
+  }
+  
+  .far.fa-trash-alt::before {
+    content: "\f2ed";
+  }
+  .fas.fa-trash-alt::before {
+    content: "\f2ed";
+  }
+  
+  .fab.fa-itunes-note::before {
+    content: "\f3b5";
+  }
+  
+  .fas.fa-pencil-alt::before {
+    content: "\f303";
+  }
+  
+  .fas.fa-thumbs-up::before {
+    content: "\f164";
+  }
+  
+  .far.fa-thumbs-up::before {
+    content: "\f164";
+  }
+  
+  .far.fa-thumbs-up::before {
+    content: "\f164";
+  }
+  
+  .fas.fa-thumbs-up::before {
+    content: "\f164";
+  }
+  
+  .fas.fa-plus::before {
+    content: "\f067";
+  }
+  
+  .fas.fa-th-list::before {
+    content: "\f00b";
+  }
+  
+  .far.fa-bell::before {
+    content: "\f0f3";
+  }
+  
+  .fas.fa-bell::before {
+    content: "\f0f3";
+  }
+  
+  .far.fa-envelope::before {
+    content: "\f0e0";
+  }
+  
+  .far.fa-eye-slash::before {
+    content: "\f070";
+    cursor: pointer;
+  }
+  
+  .far.fa-imag::before {
+    content: "\f03e";
+  }
+  
+  .fas.fa-user::before {
+    content: "\f007";
+  }
+  
+  .fab.fa-facebook-f::before {
+    content: "\f39e";
+  }
+  
+  .fab.fa-facebook::before {
+    content: "\f09a";
+  }
+  
+  .fas.fa-link::before {
+    content: "\f0c1";
+  }
+  
+  .fab.fa-facebook::before {
+    content: "\f09a";
+  }
+  
+  .fab.fa-whatsapp::before {
+    content: "\f232";
+  }
+  .fas.fa-times::before {
+    content: "\f00d";
+  }
