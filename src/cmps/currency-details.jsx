@@ -43,16 +43,28 @@ function CurrencyDetails({ symbol }) {
         }
     }
 
+    function getValueColor(val) {
+        if (val[1] > val[0]) {
+            return 'green'
+        }
+        else if (val[1] < val[0]) {
+            return 'red'
+        }
+        else {
+            return ''
+        }
+    }
+
     return (
         <tr>
-            <td component="th" scope="row">
+            <td className='table-cell'>
                 {symbol}
             </td>
-            <td >now: {lastPrice[1]}, previous: {lastPrice[0]}</td>
-            <td >now: {priceChange[1]}</td>
-            <td >now: {volume[1]}</td>
-            <td >now: {bid[1]}</td>
-            <td >now: {ask[1]}</td>
+            <td className={`table-cell ${getValueColor(lastPrice)}`}>{lastPrice[1]}</td>
+            <td className={`table-cell ${getValueColor(priceChange)}`}>{priceChange[1]}</td>
+            <td className={`table-cell ${getValueColor(volume)}`}>{volume[1]}</td>
+            <td className={`table-cell ${getValueColor(bid)}`}>{bid[1]}</td>
+            <td className={`table-cell ${getValueColor(ask)}`}>{ask[1]}</td>
         </tr>
     );
 }
