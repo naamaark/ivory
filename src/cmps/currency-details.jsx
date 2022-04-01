@@ -1,23 +1,32 @@
-import React, { useState, useEffect } from 'react';
-import TableRow from '@mui/material/TableRow';
-import TableCell from '@mui/material/TableCell';
+import React, { useState, useEffect, useRef } from 'react';
+import { dataService } from '../services/data.api.service';
 
-function CurrencyDetails({symbol}) {
-    const [price, setPrice] = useState(0)
-    const [change, setChange] = useState(0)
-    const [total, setTotal] = useState(0)
-    const [ask, setAsk] = useState(0);
-    const [bid, setBid] = useState(0)
+
+
+function CurrencyDetails({ symbol }) {
+    const [lastPrice, setLastPrice] = useState([0, 0])
+    const [priceChange, setPriceChange] = useState([0, 0])
+    const [volume, setVolume] = useState([0, 0])
+    const [bid, setBid] = useState([0, 0])
+    const [ask, setAsk] = useState([0, 0])
+    const states = [
+        [lastPrice, setLastPrice],
+        [priceChange, setPriceChange],
+        [volume, setVolume],
+        [bid, setBid],
+        [ask, setAsk]
+    ]
+
+
     useEffect(
         () => {
-            let ws = new WebSocket(`wss://stream.binance.com:9443/ws/${symbol}@ticker`)
+            let ws = new WebSocket(`wss://stream.binance.com:9443/ws/${symbol}usdt@ticker`)
             ws.onmessage = (event) => {
-                let stock = JSON.parse(event.data)
-                setPrice(stock.c)
-                setChange(stock.p)
-                setTotal(stock.v)
-                setAsk(stock.l)
-                setBid(stock.h)
+                const { c, P, v, h, l } = JSON.parse(event.data)
+                let values = [c, P, v, h, l]
+                values.forEach((val, idx) => {
+                    updateValue(val, states[idx][0], states[idx][1])
+                })
             }
 
             return () => {
@@ -26,18 +35,28 @@ function CurrencyDetails({symbol}) {
         },
         []
     )
+
+    function updateValue(newVal, currVal, func) {
+        newVal = parseFloat(newVal);
+        if (newVal !== currVal[1]) {
+            func(currVal => [currVal[1], newVal])
+        }
+    }
+
     return (
-        <TableRow key={symbol}>
-            <TableCell component="th" scope="row">
+        <tr>
+            <td component="th" scope="row">
                 {symbol}
-            </TableCell>
-            <TableCell >{price}</TableCell>
-            <TableCell >{change}%</TableCell>
-            <TableCell >{total}</TableCell>
-            <TableCell >{ask}</TableCell>
-            <TableCell >{bid}</TableCell>
-        </TableRow>
+            </td>
+            <td >now: {lastPrice[1]}, previous: {lastPrice[0]}</td>
+            <td >now: {priceChange[1]}</td>
+            <td >now: {volume[1]}</td>
+            <td >now: {bid[1]}</td>
+            <td >now: {ask[1]}</td>
+        </tr>
     );
 }
 
 export default CurrencyDetails;
+
+// className={`table-cell ${((lastPriced < lastPrice) ? "green" : "black")}`}

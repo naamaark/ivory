@@ -19,18 +19,10 @@
     background: #888;
   }
   
-  // @include for-mobile-layout {
-  //   ::-webkit-scrollbar {
-  //     // height: 0;
-  //     // width: 5px;
-  //   }
-  // }
-  
   body {
     background-color: $clr1;
     margin: 0;
     color: $clr7;
-    font-family: gotham-light, rubic;
   }
   
   ::selection {
@@ -46,19 +38,4 @@
   h6,
   p {
     margin: 0;
-  }
-  
-  button {
-    border: 0;
-    background-color: transparent;
-    cursor: pointer;
-  }
-  
-  a {
-    color: $clr7;
-    text-decoration: none;
-    font-family: gotham-bold;
-    &:hover {
-      cursor: pointer;
-    }
   }
