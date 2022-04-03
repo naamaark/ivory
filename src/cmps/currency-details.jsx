@@ -1,9 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { dataService } from '../services/data.api.service';
 
 
-
-function CurrencyDetails({ symbol }) {
+function CurrencyDetails({ currency, onDeleteCurrency }) {
     const [lastPrice, setLastPrice] = useState([0, 0])
     const [priceChange, setPriceChange] = useState([0, 0])
     const [volume, setVolume] = useState([0, 0])
@@ -20,10 +18,10 @@ function CurrencyDetails({ symbol }) {
 
     useEffect(
         () => {
-            let ws = new WebSocket(`wss://stream.binance.com:9443/ws/${symbol}usdt@ticker`)
+            let ws = new WebSocket(`wss://stream.binance.com:9443/ws/${currency.symbol}usdt@ticker`)
             ws.onmessage = (event) => {
-                const { c, P, v, h, l } = JSON.parse(event.data)
-                let values = [c, P, v, h, l]
+                const { c, P, v, b, a } = JSON.parse(event.data)
+                let values = [c, P, v, b, a]
                 values.forEach((val, idx) => {
                     updateValue(val, states[idx][0], states[idx][1])
                 })
@@ -58,13 +56,15 @@ function CurrencyDetails({ symbol }) {
     return (
         <tr>
             <td className='table-cell'>
-                {symbol}
+                {currency.symbol.toUpperCase()}
             </td>
             <td className={`table-cell ${getValueColor(lastPrice)}`}>{lastPrice[1]}</td>
             <td className={`table-cell ${getValueColor(priceChange)}`}>{priceChange[1]}</td>
             <td className={`table-cell ${getValueColor(volume)}`}>{volume[1]}</td>
             <td className={`table-cell ${getValueColor(bid)}`}>{bid[1]}</td>
             <td className={`table-cell ${getValueColor(ask)}`}>{ask[1]}</td>
+            <td><button onClick={() => { onDeleteCurrency(currency.symbol) }}>delete</button></td>
+            <td><button>update</button></td>
         </tr>
     );
 }
